@@ -1,6 +1,16 @@
-export default function DeleteButton() {
+import { useTodosContext } from "../lib/hooks";
+
+export default function DeleteButton({ id }) {
+  const { deleteTodo } = useTodosContext();
+
   return (
-    <button>❌</button>
-    
-  )
+    <button
+      onClick={(e) => {
+        e.stopPropagation();
+        deleteTodo(id);
+      }}
+    >
+      ❌
+    </button>
+  );
 }
